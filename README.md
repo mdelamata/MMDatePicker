@@ -1,7 +1,10 @@
 MMDatePicker
 ============
 
-UIDatePicker subclas with a Toolbar with two buttons for Select and Dismiss the DaePicker.
+UIDatePicker subclass with a Toolbar with two buttons for Select and Dismiss the DatePicker.
+
+![alt tag](https://raw.github.com/mdelamata/MMDatePicker/master/MMDatePicker%20Demo/capture.png)
+
 
 How to use it? There's nothing to it! First, import the .h :
 
