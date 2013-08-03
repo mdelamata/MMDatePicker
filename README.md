@@ -14,7 +14,7 @@ Then declare it as a property if you want to access to it properly:
 
     @property (nonatomic, strong) MMDatePicker *theDatePicker;
 
-Instantiate it and add it to the desired view as normal:
+Instantiate it and add it to the desired view as usual:
 
     //creates and adds the datepicker at the edge of the application frame.
     self.theDatePicker = [[MMDatePicker alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] applicationFrame].size.height, self.view.frame.size.width, 260)];
@@ -22,7 +22,7 @@ Instantiate it and add it to the desired view as normal:
     
 
 
-Because the frame cannot be modified for UIDatePicker you could use this init method:
+Because the UIDatePicker frame cannot be modified you could use this init method:
 
     self.theDatePicker = [[MMDatePicker alloc] initAtPosition:CGPointMake(0, [[UIScreen mainScreen] applicationFrame].size.height)];
     
@@ -53,7 +53,6 @@ Also you can access to the following additional properties:
 * acceptTitleButton -> Title of accept or select button.
 * toolBarStyle -> UIBarStyle parameter.
  
-
 
 
 Where's the tricky part?
