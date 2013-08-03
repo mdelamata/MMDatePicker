@@ -26,6 +26,16 @@
 
 @implementation MMDatePicker
 
+- (id)initAtPosition:(CGPoint)origin{
+    
+    self = [super initWithFrame:CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height)];
+    if (self) {
+        // Initialization code
+        [self setDefaultConfig];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

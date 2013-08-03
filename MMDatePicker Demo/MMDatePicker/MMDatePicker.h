@@ -28,4 +28,6 @@
 
 @property(nonatomic, assign) IBOutlet id<MMDatePickerDelegate>delegate;
 
+- (id)initAtPosition:(CGPoint)origin;
+
 @end

@@ -20,7 +20,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     
-    self.theDatePicker = [[MMDatePicker alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] applicationFrame].size.height, self.view.frame.size.width, 260)];
+    self.theDatePicker = [[MMDatePicker alloc] initAtPosition:CGPointMake(0, [[UIScreen mainScreen] applicationFrame].size.height)];
     [self.theDatePicker setDelegate:self];
     [self.theDatePicker setDatePickerMode:UIDatePickerModeDate];
     [self.view addSubview:self.theDatePicker];
