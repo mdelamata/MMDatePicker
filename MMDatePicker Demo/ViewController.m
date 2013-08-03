@@ -1,0 +1,67 @@
+//
+//  ViewController.m
+//  MMDatePicker Demo
+//
+//  Created by Manuel de la Mata Sáez on 02/08/13.
+//  Copyright (c) 2013 mms. All rights reserved.
+//
+
+#import "ViewController.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    self.theDatePicker = [[MMDatePicker alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] applicationFrame].size.height, self.view.frame.size.width, 260)];
+    [self.theDatePicker setDelegate:self];
+    [self.theDatePicker setDatePickerMode:UIDatePickerModeDate];
+    [self.view addSubview:self.theDatePicker];
+    
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - MMDatePickerDelegate Methods
+
+-(void)didPressDismissButtonOfDatePicker:(MMDatePicker *)datePicker{
+    NSLog(@">> Did press cancel Button...");
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [datePicker setTransform:CGAffineTransformIdentity];
+    }completion:^(BOOL finished) {
+    }];
+}
+
+-(void)datePicker:(MMDatePicker *)datePicker didSelectDate:(NSDate *)date{
+    NSLog(@">> Did press select Button... with date %@",date);
+    [self.dateLabel setText:[NSString stringWithFormat:@"%@",date]];
+}
+
+
+#pragma mark - IBAction Methods
+
+- (IBAction)displayDatePickerPressed:(id)sender {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.theDatePicker setTransform:CGAffineTransformMakeTranslation(0, -self.theDatePicker.height)];        
+    }completion:^(BOOL finished) {
+    }];
+    
+}
+
+
+@end
