@@ -43,6 +43,16 @@ Given the fact that this component is a Subclass of Apple's UIDatePicker, all me
 [1]: http://developer.apple.com/library/ios/#documentation/uikit/reference/UIDatePicker_Class/Reference/UIDatePicker.html        "UIDatePicke Class Reference"
 
 
+
+Also you can access to the following additional properties:
+
+* cancelTitleButton -> Title of dismiss/cancel button.
+* acceptTitleButton -> Title of accept or select button.
+* toolBarStyle -> UIBarStyle parameter.
+ 
+
+
+
 Where's the tricky part?
 ------------
 
