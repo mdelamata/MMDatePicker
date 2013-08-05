@@ -55,7 +55,7 @@ Also you can access to the following additional properties:
  
 
 
-Where's the tricky part?
+what's the catch?
 ------------
 
 As you know, height of UIDatePicker is pinned to 216px in latest iOS versions. 
