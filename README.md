@@ -6,7 +6,7 @@ UIDatePicker subclass with a Toolbar with two buttons for Select and Dismiss the
 ![alt tag](https://raw.github.com/mdelamata/MMDatePicker/master/MMDatePicker%20Demo/capture.png)
 
 
-How to use it? There's nothing to it! First, import the .h :
+How to use it? There's nothing to it! Firstly, import the .h :
 
     #import "MMDatePicker.h"
 
@@ -43,7 +43,7 @@ Customizing MMDatePicker
 ------------
 
 Given the fact that this component is a Subclass of Apple's UIDatePicker, all methods are available described [here] [1] in Apple's Documentation.
-[1]: http://developer.apple.com/library/ios/#documentation/uikit/reference/UIDatePicker_Class/Reference/UIDatePicker.html        "UIDatePicke Class Reference"
+[1]: http://developer.apple.com/library/ios/#documentation/uikit/reference/UIDatePicker_Class/Reference/UIDatePicker.html        "UIDatePicker Class Reference"
 
 
 
@@ -55,7 +55,7 @@ Also you can access to the following additional properties:
  
 
 
-what's the catch?
+What's the catch?
 ------------
 
 As you know, height of UIDatePicker is pinned to 216px in latest iOS versions. 
