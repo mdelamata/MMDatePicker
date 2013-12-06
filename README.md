@@ -20,11 +20,6 @@ Instantiate it and add it to the desired view as usual:
     self.theDatePicker = [[MMDatePicker alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] applicationFrame].size.height, self.view.frame.size.width, 260)];
     [self.view addSubview:self.theDatePicker];
     
-
-
-Because the UIDatePicker frame cannot be modified you could use this init method:
-
-    self.theDatePicker = [[MMDatePicker alloc] initAtPosition:CGPointMake(0, [[UIScreen mainScreen] applicationFrame].size.height)];
     
    
 Delegate Methods
@@ -42,7 +37,7 @@ TheMMDatePicker provides a protocol called MMDatePickerDelegate with the followi
 Customizing MMDatePicker
 ------------
 
-Given the fact that this component is a Subclass of Apple's UIDatePicker, all methods are available described [here] [1] in Apple's Documentation.
+It has a UIDatePicker as a property called `datePicker`, all methods are available described [here] [1] in Apple's Documentation.
 [1]: http://developer.apple.com/library/ios/#documentation/uikit/reference/UIDatePicker_Class/Reference/UIDatePicker.html        "UIDatePicker Class Reference"
 
 
