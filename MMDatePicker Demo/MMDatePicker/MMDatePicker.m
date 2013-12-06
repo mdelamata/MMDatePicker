@@ -104,7 +104,7 @@
     
     
     [self setBounds:CGRectMake(0,0, self.frame.size.width, TOOLBAR_STANDARD_SIZE.height+UIDATEPICKER_STANDARD_SIZE.height)];
-    NSLog(@"%f,%f",self.frame.size.width,self.frame.size.height);
+//    NSLog(@"%f,%f",self.frame.size.width,self.frame.size.height);
 
 }
 
