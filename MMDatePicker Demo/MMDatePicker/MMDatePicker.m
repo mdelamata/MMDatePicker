@@ -8,7 +8,7 @@
 
 #import "MMDatePicker.h"
 
-#define UIDATEPICKER_STANDARD_SIZE CGSizeMake(320,216)
+#define UIDATEPICKER_STANDARD_SIZE CGSizeMake(320,236)
 #define TOOLBAR_STANDARD_SIZE CGSizeMake(320,44)
 
 @interface MMDatePicker ()
@@ -18,6 +18,7 @@
 @property(nonatomic, strong) UIBarButtonItem *acceptButton;
 
 -(void)setDefaultConfig;
+-(void)configureView;
 -(void)dismissButtonPressed;
 -(void)acceptButtonPressed;
 
@@ -28,10 +29,11 @@
 
 - (id)initAtPosition:(CGPoint)origin{
     
-    self = [super initWithFrame:CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height)];
+    self = [super initWithFrame:CGRectMake(origin.x, origin.y, self.frame.size.width, TOOLBAR_STANDARD_SIZE.height+UIDATEPICKER_STANDARD_SIZE.height)];
     if (self) {
         // Initialization code
         [self setDefaultConfig];
+        [self configureView];
     }
     return self;
 }
@@ -42,6 +44,7 @@
     if (self) {
         // Initialization code
         [self setDefaultConfig];
+        [self configureView];
     }
     return self;
 }
@@ -52,51 +55,20 @@
     if (self) {
         // Initialization code
         [self setDefaultConfig];
+        [self configureView];
     }
     return self;
 }
 
 
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-    
-    //creates the toolbar
-    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOOLBAR_STANDARD_SIZE.height)];
-    
-    //moves all subviews to get some space for the toolbar
-    for (UIView *v in self.subviews) {
-        [v setFrame:CGRectMake(v.frame.origin.x, v.frame.origin.y+self.toolbar.frame.size.height, v.frame.size.width, v.frame.size.height)];
-    }
-    //now can add the toolbar
-    [self addSubview:self.toolbar];
-
-    //this is the tricky part. Because iOS newer versions no longer allows to change the frame of UIDatePicker
-    //then calculates and provides the new height in another property.
-    self.height = self.frame.size.height + self.toolbar.frame.size.height;
-    
-    
-    //ATTEMPS TO CHANGE THE FRAME SIZE (NOT POSSIBLE AT THE MOMENT, TRY IT)
-//    CGRect frame = self.frame;
-//    frame.size.height += self.toolbar.frame.size.height;
-//    [self setFrame:frame];
 //
-//    NSLog(@"sum %f, realFrame %f", frame.size.height, self.frame.size.height );
-        
- 
-    //buttons of toolbar
-    self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:self.cancelTitleButton style:UIBarButtonItemStyleBordered target:self action:@selector(dismissButtonPressed)];
-    self.acceptButton = [[UIBarButtonItem alloc] initWithTitle:self.acceptTitleButton style:UIBarButtonItemStyleBordered target:self action:@selector(acceptButtonPressed)];
-
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-
-    //adds them
-    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton,flexibleSpace,self.acceptButton, nil]];
-    
-}
+//// Only override drawRect: if you perform custom drawing.
+//// An empty implementation adversely affects performance during animation.
+//- (void)drawRect:(CGRect)rect
+//{
+//    
+//    
+//}
 
 //default configuration
 -(void)setDefaultConfig{
@@ -105,8 +77,36 @@
     self.acceptTitleButton = @"Select";
     
     self.toolBarStyle = UIBarStyleBlackTranslucent;
+    
 }
 
+-(void)configureView{
+    // Drawing code
+    
+    //creates the toolbar
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOOLBAR_STANDARD_SIZE.height)];
+    
+    //now can add the toolbar
+    [self addSubview:self.toolbar];
+    
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, TOOLBAR_STANDARD_SIZE.height, self.frame.size.width, UIDATEPICKER_STANDARD_SIZE.height)];
+    //now can add the datePicker
+    [self addSubview:self.datePicker];
+    
+    //buttons of toolbar
+    self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:self.cancelTitleButton style:UIBarButtonItemStyleBordered target:self action:@selector(dismissButtonPressed)];
+    self.acceptButton = [[UIBarButtonItem alloc] initWithTitle:self.acceptTitleButton style:UIBarButtonItemStyleBordered target:self action:@selector(acceptButtonPressed)];
+    
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    //adds them
+    [self.toolbar setItems:[NSArray arrayWithObjects:self.cancelButton,flexibleSpace,self.acceptButton, nil]];
+    
+    
+    [self setBounds:CGRectMake(0,0, self.frame.size.width, TOOLBAR_STANDARD_SIZE.height+UIDATEPICKER_STANDARD_SIZE.height)];
+    NSLog(@"%f,%f",self.frame.size.width,self.frame.size.height);
+
+}
 
 //customizing subviews
 -(void)layoutSubviews{
@@ -135,7 +135,7 @@
 //Method that calls the delegate for actionButton
 -(void)acceptButtonPressed{
     if (self.delegate && [self.delegate respondsToSelector:@selector(datePicker:didSelectDate:)]) {
-        [self.delegate datePicker:self didSelectDate:self.date];
+        [self.delegate datePicker:self didSelectDate:self.datePicker.date];
     }
 }
 @end

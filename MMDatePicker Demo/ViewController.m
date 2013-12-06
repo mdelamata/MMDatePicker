@@ -20,11 +20,14 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     
-    self.theDatePicker = [[MMDatePicker alloc] initAtPosition:CGPointMake(0, [[UIScreen mainScreen] applicationFrame].size.height)];
+    self.theDatePicker = [[MMDatePicker alloc] initWithFrame:CGRectMake(0,
+                                                                        [[UIScreen mainScreen] applicationFrame].size.height,
+                                                                        [[UIScreen mainScreen] applicationFrame].size.width,
+                                                                        400)]; //height is not important, it will be overwritten
     [self.theDatePicker setDelegate:self];
-    [self.theDatePicker setDatePickerMode:UIDatePickerModeDate];
+    [self.theDatePicker.datePicker setDatePickerMode:UIDatePickerModeDate];
+    [self.theDatePicker setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.theDatePicker];
-    
     
 }
 
@@ -57,7 +60,7 @@
 - (IBAction)displayDatePickerPressed:(id)sender {
     
     [UIView animateWithDuration:0.3 animations:^{
-        [self.theDatePicker setTransform:CGAffineTransformMakeTranslation(0, -self.theDatePicker.height)];        
+        [self.theDatePicker setTransform:CGAffineTransformMakeTranslation(0, -self.theDatePicker.frame.size.height)];
     }completion:^(BOOL finished) {
     }];
     

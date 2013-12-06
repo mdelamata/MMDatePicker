@@ -17,14 +17,14 @@
 
 @end
 
-@interface MMDatePicker : UIDatePicker
+@interface MMDatePicker : UIView
 
 @property(nonatomic, strong) NSString *cancelTitleButton;
 @property(nonatomic, strong) NSString *acceptTitleButton;
 @property(nonatomic, strong) UIFont *toolBarFont;
 
 @property(nonatomic, assign) UIBarStyle toolBarStyle;
-@property(nonatomic, assign) CGFloat height;
+@property(nonatomic, strong) UIDatePicker *datePicker;
 
 @property(nonatomic, assign) IBOutlet id<MMDatePickerDelegate>delegate;
 
