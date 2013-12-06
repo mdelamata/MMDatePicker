@@ -50,14 +50,6 @@ Also you can access to the following additional properties:
  
 
 
-What's the catch?
-------------
-
-As you know, height of UIDatePicker is pinned to 216px in latest iOS versions. 
-Although the frame is bigger because of the addition of the UIToolBar, if you call theDatePicker.frame.size.height it will return you ALWAYS 216px (it should be 260px)
-Thats the reason why there is a tricky property called "height" that will return you the "real" height of the component. If you guys know how to fix this don't hesitate giving ideas, please!
-
-
 
 
 
